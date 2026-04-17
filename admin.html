@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faculty Admin | Aqua Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Tenor+Sans&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --deep-teal: #024959;
+      --admin-red: #8b0000;
+      --white: #ffffff;
+      --font-heading: 'Tenor Sans', serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body { background-color: #f0f2f5; font-family: var(--font-body); margin: 0; }
+    
+    nav {
+      background: var(--deep-teal);
+      padding: 15px 30px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .admin-container { padding: 40px; }
+    .card {
+      background: white;
+      padding: 25px;
+      border-left: 5px solid var(--admin-red);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .btn-logout {
+      background: transparent;
+      border: 1px solid white;
+      color: white;
+      padding: 8px 15px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div style="font-family: var(--font-heading); letter-spacing: 2px;">ADMIN PANEL</div>
+  <button id="btnLogout" class="btn-logout">Logout</button>
+</nav>
+
+<div class="admin-container">
+  <div class="card">
+    <h2 style="font-family: var(--font-heading);">Faculty Control Center</h2>
+    <p>Logged in as: <span id="adminEmail">...</span></p>
+    <p>Selamat datang, Admin. Di sini Anda dapat mengelola arsip dan data pendaftar.</p>
+  </div>
+</div>
+
+<script type="module" src="script/admin.js"></script>
+</body>
+</html>

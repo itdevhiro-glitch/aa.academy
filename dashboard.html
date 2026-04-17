@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scholar Dashboard | Aqua Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Tenor+Sans&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sand: #f4ece1;
+      --deep-teal: #024959;
+      --gold-accent: #d4a373;
+      --white: #ffffff;
+      --font-heading: 'Tenor Sans', serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--sand);
+      font-family: var(--font-body);
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: var(--deep-teal);
+      width: 100%;
+      padding: 20px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+    }
+
+    .container {
+      background: white;
+      width: 90%;
+      max-width: 800px;
+      margin-top: 50px;
+      padding: 40px;
+      border-radius: 4px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    h1 { font-family: var(--font-heading); color: var(--deep-teal); }
+    .btn-logout {
+      background: var(--gold-accent);
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-family: var(--font-heading);
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">AQUA ACADEMY</div>
+  <button id="btnLogout" class="btn-logout">Sign Out</button>
+</header>
+
+<div class="container">
+  <h1>Welcome, <span id="userName">Scholar</span></h1>
+  <p>Status: <strong id="userStatus">Active</strong></p>
+  <hr>
+  <p>Selamat datang di portal akademik. Anda memiliki akses ke arsip komunitas.</p>
+</div>
+
+<script type="module" src="script/dashboard.js"></script>
+</body>
+</html>
