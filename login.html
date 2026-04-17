@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal | Aqua Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Tenor+Sans&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sand: #f4ece1;
+      --deep-teal: #024959;
+      --gold-accent: #d4a373;
+      --text-dark: #1a3c40;
+      --white: #ffffff;
+      --font-heading: 'Tenor Sans', serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--sand);
+      font-family: var(--font-body);
+      color: var(--text-dark);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Background accent */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 40vh;
+      background-color: var(--deep-teal);
+      z-index: 0;
+    }
+
+    .auth-container {
+      background-color: var(--white);
+      width: 90%;
+      max-width: 450px;
+      padding: 50px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+      border-radius: 4px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .brand-header h2 {
+      font-family: var(--font-heading);
+      letter-spacing: 4px;
+      font-size: 1.1rem;
+      color: var(--deep-teal);
+      text-transform: uppercase;
+    }
+
+    .auth-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 35px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .tab-link {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding-bottom: 12px;
+      cursor: pointer;
+      color: #aaa;
+      transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-bottom: 2px solid transparent;
+    }
+
+    .tab-link.active {
+      color: var(--deep-teal);
+      border-bottom: 2px solid var(--gold-accent);
+    }
+
+    /* Form Visibility */
+    .auth-form {
+      display: none;
+      animation: slideUp 0.6s ease;
+    }
+
+    .auth-form.active {
+      display: block;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: var(--deep-teal);
+      opacity: 0.8;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1px solid #e0e0e0;
+      background: #fafafa;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border-color: var(--gold-accent);
+      background: var(--white);
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 16px;
+      background-color: var(--deep-teal);
+      color: var(--white);
+      border: none;
+      font-family: var(--font-heading);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: 0.4s;
+      font-size: 0.8rem;
+    }
+
+    .btn-submit:hover {
+      background-color: var(--gold-accent);
+      color: var(--text-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(212, 163, 115, 0.3);
+    }
+
+    .back-home {
+      position: absolute;
+      top: -60px;
+      left: 0;
+      text-decoration: none;
+      color: var(--white);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.75rem;
+      opacity: 0.5;
+      letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 480px) {
+      .auth-container { padding: 40px 25px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="auth-container">
+  <a href="index.html" class="back-home">← Return to Academy</a>
+  
+  <div class="brand-header">
+    <h2>Aqua Academy</h2>
+  </div>
+
+  <div class="auth-tabs">
+    <div class="tab-link" id="tab-signin" onclick="showForm('signin')">Sign In</div>
+    <div class="tab-link" id="tab-signup" onclick="showForm('signup')">Sign Up</div>
+  </div>
+
+  <div id="form-signin" class="auth-form">
+    <form action="#">
+      <div class="form-group">
+        <label>Academic Identifier</label>
+        <input type="email" placeholder="email@aquaacademy.edu" required>
+      </div>
+      <div class="form-group">
+        <label>Security Key</label>
+        <input type="password" placeholder="••••••••" required>
+      </div>
+      <button type="submit" class="btn-submit">Authenticate</button>
+    </form>
+    <p class="footer-note">Accessing the restricted archives.</p>
+  </div>
+
+  <div id="form-signup" class="auth-form">
+    <form action="#">
+      <div class="form-group">
+        <label>Scholar Name</label>
+        <input type="text" placeholder="Your full name" required>
+      </div>
+      <div class="form-group">
+        <label>Academic Identifier</label>
+        <input type="email" placeholder="your@email.com" required>
+      </div>
+      <div class="form-group">
+        <label>Create Security Key</label>
+        <input type="password" placeholder="••••••••" required>
+      </div>
+      <button type="submit" class="btn-submit">Join the Faculty</button>
+    </form>
+    <p class="footer-note">By enrolling, you accept the Platonist code.</p>
+  </div>
+</div>
+
+<script>
+  // Fungsi untuk ganti form
+  function showForm(mode) {
+    const tabs = document.querySelectorAll('.tab-link');
+    const forms = document.querySelectorAll('.auth-form');
+
+    tabs.forEach(t => t.classList.remove('active'));
+    forms.forEach(f => f.classList.remove('active'));
+
+    if (mode === 'signup') {
+      document.getElementById('tab-signup').classList.add('active');
+      document.getElementById('form-signup').classList.add('active');
+    } else {
+      document.getElementById('tab-signin').classList.add('active');
+      document.getElementById('form-signin').classList.add('active');
+    }
+  }
+
+  // Cek parameter di URL (?mode=signup)
+  const params = new URLSearchParams(window.location.search);
+  const currentMode = params.get('mode');
+
+  if (currentMode === 'signup') {
+    showForm('signup');
+  } else {
+    showForm('signin');
+  }
+</script>
+
+</body>
+</html>
