@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archives | Aqua Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Tenor+Sans&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sand: #f4ece1;
+      --warm-aqua: #00a896;
+      --deep-teal: #024959;
+      --gold-accent: #d4a373;
+      --text-dark: #1a3c40;
+      --white: #ffffff;
+      --font-heading: 'Tenor Sans', serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+
+    body {
+      background-color: var(--sand);
+      color: var(--text-dark);
+      font-family: var(--font-body);
+      line-height: 1.6;
+    }
+
+    /* --- Navbar --- */
+    header {
+      background-color: var(--deep-teal);
+      width: 100%;
+      padding: 25px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .brand {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      letter-spacing: 3px;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    nav a:hover {
+      color: var(--gold-accent);
+    }
+
+    .btn-signup {
+      background-color: var(--gold-accent);
+      color: var(--deep-teal) !important;
+      padding: 8px 20px;
+      border-radius: 2px;
+    }
+
+    /* --- Hero Section --- */
+    .hero-archives {
+      background-color: var(--deep-teal);
+      color: var(--white);
+      padding: 100px 8% 60px;
+      text-align: center;
+    }
+
+    .hero-archives h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 15px;
+    }
+
+    .hero-archives p {
+      font-weight: 300;
+      opacity: 0.8;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* --- Controls (Search & Filter) --- */
+    .controls {
+      padding: 40px 8% 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 280px;
+      max-width: 400px;
+    }
+
+    #archiveSearch {
+      width: 100%;
+      padding: 12px 25px;
+      border: 1px solid rgba(2, 73, 89, 0.2);
+      border-radius: 30px;
+      font-family: var(--font-body);
+      outline: none;
+    }
+
+    .filter-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .filter-btn {
+      padding: 8px 20px;
+      border: 1px solid var(--deep-teal);
+      background: transparent;
+      color: var(--deep-teal);
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: 0.3s;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--deep-teal);
+      color: var(--white);
+    }
+
+    /* --- Archive List --- */
+    .archive-section {
+      padding: 20px 8% 100px;
+    }
+
+    .archive-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .archive-item {
+      background: var(--white);
+      padding: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      border-left: 0px solid var(--gold-accent);
+    }
+
+    .archive-item:hover {
+      transform: translateX(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      border-left: 6px solid var(--gold-accent);
+    }
+
+    .content-meta {
+      flex: 1;
+    }
+
+    .archive-tag {
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--gold-accent);
+      letter-spacing: 1.5px;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .archive-item h3 {
+      font-family: var(--font-heading);
+      color: var(--deep-teal);
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+
+    .archive-date {
+      font-size: 0.8rem;
+      opacity: 0.6;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .archive-desc {
+      font-size: 0.9rem;
+      color: #666;
+      max-width: 500px;
+    }
+
+    .view-btn {
+      text-decoration: none;
+      color: var(--deep-teal);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      border: 1px solid var(--deep-teal);
+      padding: 10px 25px;
+      transition: 0.3s;
+    }
+
+    .view-btn:hover {
+      background: var(--deep-teal);
+      color: var(--white);
+    }
+
+    /* --- Footer --- */
+    footer {
+      background-color: var(--sand);
+      padding: 60px 5%;
+      text-align: center;
+      border-top: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .footer-brand {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      color: var(--deep-teal);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    footer p {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    @media (max-width: 768px) {
+      .archive-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+      nav a:not(.btn-signup) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="brand">AQUA ACADEMY</a>
+  <nav>
+    <a href="curriculum.html">Curriculum</a>
+    <a href="team.html">Team</a>
+    <a href="archives.html">Archives</a>
+    <a href="https://discord.gg/M3P3ncHCCZ" class="btn-signup">Join Discord</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero-archives">
+    <h1>Archives</h1>
+    <p>Explore our past knowledge, events, and community resources preserved for the future.</p>
+  </section>
+
+  <div class="controls">
+    <div class="search-box">
+      <input type="text" id="archiveSearch" placeholder="Search archives by title..." onkeyup="filterArchives()">
+    </div>
+    <div class="filter-group">
+      <button class="filter-btn active" onclick="setCategory('all', this)">All</button>
+      <button class="filter-btn" onclick="setCategory('Event', this)">Events</button>
+      <button class="filter-btn" onclick="setCategory('Materi', this)">Materi</button>
+      <button class="filter-btn" onclick="setCategory('Project', this)">Projects</button>
+    </div>
+  </div>
+
+  <section class="archive-section">
+    <div class="archive-container" id="archiveList">
+      
+      <div class="archive-item" data-category="Materi">
+        <div class="content-meta">
+          <span class="archive-tag">Materi</span>
+          <h3>Workshop Web Dev #1: Modern CSS</h3>
+          <span class="archive-date">Oct 12, 2025</span>
+          <p class="archive-desc">A deep dive into CSS Grid, Flexbox, and modern design systems for scalable applications.</p>
+        </div>
+        <a href="#" class="view-btn">Download</a>
+      </div>
+
+      <div class="archive-item" data-category="Event">
+        <div class="content-meta">
+          <span class="archive-tag">Event</span>
+          <h3>Atlantis Summit 2025</h3>
+          <span class="archive-date">Dec 05, 2025</span>
+          <p class="archive-desc">Annual gathering of innovators discussing the intersection of Platonist philosophy and AI.</p>
+        </div>
+        <a href="#" class="view-btn">View Details</a>
+      </div>
+
+      <div class="archive-item" data-category="Project">
+        <div class="content-meta">
+          <span class="archive-tag">Project</span>
+          <h3>Project: Open Source Library</h3>
+          <span class="archive-date">Jan 20, 2026</span>
+          <p class="archive-desc">Collaborative repository for dialectical resources and educational modules.</p>
+        </div>
+        <a href="#" class="view-btn">Explore</a>
+      </div>
+
+      <div class="archive-item" data-category="Materi">
+        <div class="content-meta">
+          <span class="archive-tag">Materi</span>
+          <h3>UI/UX Masterclass Assets</h3>
+          <span class="archive-date">Feb 14, 2026</span>
+          <p class="archive-desc">Figma templates and documentation from our specialized design sanctuary.</p>
+        </div>
+        <a href="#" class="view-btn">Download</a>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span class="footer-brand">AQUA ACADEMY</span>
+  <p>© 2026 BRIGHT CHANGE • ATLANTIS PROJECT</p>
+</footer>
+
+<script>
+  let currentCategory = 'all';
+
+  function setCategory(category, btn) {
+    // UI: Update active button
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    
+    currentCategory = category;
+    filterArchives();
+  }
+
+  function filterArchives() {
+    const searchInput = document.getElementById('archiveSearch').value.toLowerCase();
+    const items = document.querySelectorAll('.archive-item');
+
+    items.forEach(item => {
+      const title = item.querySelector('h3').innerText.toLowerCase();
+      const category = item.getAttribute('data-category');
+      
+      const matchesSearch = title.includes(searchInput);
+      const matchesCategory = currentCategory === 'all' || category === currentCategory;
+
+      if (matchesSearch && matchesCategory) {
+        item.style.display = 'flex';
+        setTimeout(() => item.style.opacity = '1', 10);
+      } else {
+        item.style.opacity = '0';
+        item.style.display = 'none';
+      }
+    });
+  }
+</script>
+
+</body>
+</html>

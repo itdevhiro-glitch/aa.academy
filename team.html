@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Team | Aqua Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Tenor+Sans&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sand: #f4ece1;
+      --warm-aqua: #00a896;
+      --deep-teal: #024959;
+      --gold-accent: #d4a373;
+      --text-dark: #1a3c40;
+      --white: #ffffff;
+      --font-heading: 'Tenor Sans', serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+
+    body {
+      background-color: var(--sand);
+      color: var(--text-dark);
+      font-family: var(--font-body);
+      line-height: 1.6;
+    }
+
+    /* --- Navbar --- */
+    header {
+      background-color: var(--deep-teal);
+      width: 100%;
+      padding: 25px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .brand {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      letter-spacing: 3px;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    nav a:hover {
+      color: var(--gold-accent);
+    }
+
+    .btn-signup {
+      background-color: var(--gold-accent);
+      color: var(--deep-teal) !important;
+      padding: 8px 20px;
+      border-radius: 2px;
+    }
+
+    /* --- Hero Section --- */
+    .hero-team {
+      background-color: var(--deep-teal);
+      color: var(--white);
+      padding: 100px 8% 60px;
+      text-align: center;
+    }
+
+    .hero-team h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 15px;
+    }
+
+    .hero-team p {
+      font-weight: 300;
+      opacity: 0.8;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* --- Search Section --- */
+    .search-container {
+      padding: 40px 8% 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    #teamSearch {
+      width: 100%;
+      max-width: 400px;
+      padding: 12px 20px;
+      border: 1px solid var(--deep-teal);
+      background: var(--white);
+      border-radius: 30px;
+      font-family: var(--font-body);
+      outline: none;
+      transition: 0.3s;
+    }
+
+    #teamSearch:focus {
+      box-shadow: 0 0 15px rgba(2, 73, 89, 0.2);
+    }
+
+    /* --- Team Grid --- */
+    .team-section {
+      padding: 40px 8% 100px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 40px;
+    }
+
+    .team-card {
+      background: var(--white);
+      border-radius: 4px;
+      overflow: hidden;
+      text-align: center;
+      padding-bottom: 30px;
+      position: relative;
+      transition: all 0.4s ease;
+      border-bottom: 3px solid transparent;
+    }
+
+    .team-card:hover {
+      transform: translateY(-10px);
+      border-bottom: 3px solid var(--gold-accent);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 100%; /* Square aspect ratio */
+      background: #e0d7cc;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .avatar-wrapper img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: grayscale(40%);
+      transition: 0.4s;
+    }
+
+    .team-card:hover img {
+      filter: grayscale(0%);
+      transform: scale(1.05);
+    }
+
+    .social-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(2, 73, 89, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      opacity: 0;
+      transition: 0.3s ease;
+    }
+
+    .avatar-wrapper:hover .social-overlay {
+      opacity: 1;
+    }
+
+    .social-overlay a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.8rem;
+      padding: 8px 12px;
+      border: 1px solid var(--white);
+      transition: 0.3s;
+    }
+
+    .social-overlay a:hover {
+      background: var(--white);
+      color: var(--deep-teal);
+    }
+
+    .team-info h3 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      color: var(--deep-teal);
+      margin-bottom: 5px;
+    }
+
+    .role-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold-accent);
+      font-weight: 700;
+    }
+
+    /* --- Footer --- */
+    footer {
+      background-color: var(--sand);
+      padding: 60px 5%;
+      text-align: center;
+      border-top: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .footer-brand {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      color: var(--deep-teal);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    footer p {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    @media (max-width: 768px) {
+      nav a:not(.btn-signup) { display: none; }
+      .grid { gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="brand">AQUA ACADEMY</a>
+  <nav>
+    <a href="curriculum.html">Curriculum</a>
+    <a href="team.html">Team</a>
+    <a href="archives.html">Archives</a>
+    <a href="https://discord.gg/M3P3ncHCCZ" class="btn-signup">Join Discord</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero-team">
+    <h1>Our Team</h1>
+    <p>Meet the visionary minds shaping the intellectual sanctuary of Aqua Academy.</p>
+  </section>
+
+  <div class="search-container">
+    <input type="text" id="teamSearch" placeholder="Search team member name..." onkeyup="searchTeam()">
+  </div>
+
+  <section class="team-section">
+    <div class="grid" id="teamGrid">
+      
+      <div class="team-card">
+        <div class="avatar-wrapper">
+          <img src="https://via.placeholder.com/400" alt="Team Member">
+          <div class="social-overlay">
+            <a href="#">Discord</a>
+            <a href="#">Github</a>
+          </div>
+        </div>
+        <div class="team-info">
+          <h3>Julian Thorne</h3>
+          <span class="role-label">Admin</span>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="avatar-wrapper">
+          <img src="https://via.placeholder.com/400" alt="Team Member">
+          <div class="social-overlay">
+            <a href="#">Discord</a>
+          </div>
+        </div>
+        <div class="team-info">
+          <h3>Elena Vance</h3>
+          <span class="role-label">Mentor</span>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="avatar-wrapper">
+          <img src="https://via.placeholder.com/400" alt="Team Member">
+          <div class="social-overlay">
+            <a href="#">Github</a>
+          </div>
+        </div>
+        <div class="team-info">
+          <h3>Marcus Holloway</h3>
+          <span class="role-label">Developer</span>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="avatar-wrapper">
+          <img src="https://via.placeholder.com/400" alt="Team Member">
+          <div class="social-overlay">
+            <a href="#">Discord</a>
+          </div>
+        </div>
+        <div class="team-info">
+          <h3>Sarah Jenkins</h3>
+          <span class="role-label">Moderator</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span class="footer-brand">AQUA ACADEMY</span>
+  <p>© 2026 BRIGHT CHANGE • ATLANTIS PROJECT</p>
+</footer>
+
+<script>
+  function searchTeam() {
+    const input = document.getElementById('teamSearch');
+    const filter = input.value.toLowerCase();
+    const grid = document.getElementById('teamGrid');
+    const cards = grid.getElementsByClassName('team-card');
+
+    for (let i = 0; i < cards.length; i++) {
+      const name = cards[i].getElementsByTagName('h3')[0];
+      if (name) {
+        const textValue = name.textContent || name.innerText;
+        if (textValue.toLowerCase().indexOf(filter) > -1) {
+          cards[i].style.display = "";
+          cards[i].style.opacity = "1";
+        } else {
+          cards[i].style.display = "none";
+          cards[i].style.opacity = "0";
+        }
+      }
+    }
+  }
+</script>
+
+</body>
+</html>
