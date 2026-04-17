@@ -78,22 +78,12 @@
       border-bottom: 1px solid transparent;
     }
 
-    .btn-signin:hover {
-      border-bottom: 1px solid var(--white);
-      opacity: 1;
-    }
-
     .btn-signup {
       background-color: var(--gold-accent);
       color: var(--deep-teal) !important;
       padding: 8px 20px;
       border-radius: 2px;
       mix-blend-mode: normal !important;
-    }
-
-    .btn-signup:hover {
-      background-color: var(--white);
-      opacity: 1;
     }
 
     .hero {
@@ -164,17 +154,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--text-dark);
-      text-decoration: none;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       z-index: 10;
       box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .floating-btn svg {
       width: 50px;
       fill: var(--text-dark);
-      transition: transform 0.3s;
     }
 
     .floating-btn:hover {
@@ -214,13 +201,6 @@
       grid-template-columns: 1fr 1fr;
       gap: 80px;
       align-items: center;
-      background-color: var(--sand);
-    }
-
-    .philosophy-image {
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
 
     .philosophy-image img {
@@ -238,18 +218,11 @@
       color: var(--deep-teal);
     }
 
-    .philosophy-text p {
-      color: var(--text-dark);
-      margin-bottom: 25px;
-      font-size: 1.1rem;
-      opacity: 0.85;
-    }
-
     footer {
       background-color: var(--sand);
-      border-top: 1px solid rgba(0,0,0,0.05);
       padding: 60px 5%;
       text-align: center;
+      border-top: 1px solid rgba(0,0,0,0.05);
     }
 
     footer p {
@@ -260,12 +233,53 @@
     }
 
     @media (max-width: 1024px) {
-      header { flex-direction: column; gap: 20px; }
-      .hero { flex-direction: column; height: auto; }
-      .hero-content { padding: 180px 8% 80px; order: 2; }
-      .hero-visual { height: 60vh; order: 1; }
-      .floating-btn { right: 30px; top: -60px; transform: none; }
-      .philosophy { grid-template-columns: 1fr; text-align: center; gap: 60px; }
+      header {
+        padding: 25px 5%;
+      }
+      
+      nav a:not(.btn-signup) {
+        display: none;
+      }
+
+      .hero {
+        flex-direction: column;
+        height: auto;
+      }
+
+      .hero-content {
+        padding: 120px 8% 80px;
+        order: 2;
+        text-align: center;
+        align-items: center;
+      }
+
+      .hero-content p {
+        margin: 0 auto 40px;
+      }
+
+      .hero-visual {
+        height: 50vh;
+        order: 1;
+      }
+
+      .floating-btn {
+        right: 50%;
+        top: 0;
+        transform: translate(50%, -50%);
+        width: 100px;
+        height: 100px;
+      }
+
+      .floating-btn:hover {
+        transform: translate(50%, -50%) scale(1.1);
+      }
+
+      .philosophy {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 50px;
+        padding: 80px 8%;
+      }
     }
   </style>
 </head>
@@ -306,18 +320,17 @@
     </div>
 
     <div class="hero-visual">
-      <img src="aquawarm.png" alt="Warm Sea Atlantis Aesthetics">
+      <img src="aquawarm.png" alt="Aesthetics">
     </div>
   </section>
 
   <section class="philosophy">
     <div class="philosophy-image">
-       <img src="logo.png" alt="Aqua Academy Official Seal">
+       <img src="logo.png" alt="Seal">
     </div>
     <div class="philosophy-text">
       <h2>Education <br>Beyond Borders.</h2>
       <p>Rooted in Platonic foundations, Aqua Academy prioritizes intellectual development through rigorous healthy debate and inclusive pedagogical practices.</p>
-      <p>Here, our emblem serves as a symbol of resilience and the strength of a scholarly community navigating the shifting tides of the modern world.</p>
     </div>
   </section>
 </main>
