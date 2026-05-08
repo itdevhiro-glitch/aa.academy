@@ -205,6 +205,25 @@
       display: block;
     }
 
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(0, 168, 150, 0.12);
+      color: #00674e;
+      font-size: 0.75rem;
+      letter-spacing: 0.8px;
+      font-weight: 700;
+      margin-top: 12px;
+    }
+
+    .status-badge.offline {
+      background: rgba(36, 37, 38, 0.08);
+      color: rgba(26, 60, 64, 0.7);
+    }
+
     .social-overlay {
       position: absolute;
       top: 20px;
@@ -297,89 +316,7 @@
   </div>
 
   <section class="team-section">
-    <div class="grid" id="teamGrid">
-      
-      <div class="team-card">
-        <div class="avatar-wrapper">
-          <img src="asset/hirobskt.jpg" alt="Team Member">
-          <div class="social-overlay">
-            <a href="https://www.instagram.com/hiro.esc">IG</a>
-            <a href="https://reality.app/profile/c4e72ce1?adj_t=8ogcewh_z9yhix5">RL</a>
-          </div>
-        </div>
-        <div class="team-info">
-          <span class="role-label">Point Guard (PG)</span>
-          <h3>Hiro</h3>
-        </div>
-      </div>
-
-      <div class="team-card">
-        <div class="avatar-wrapper">
-          <img src="asset/mizubskt.jpg" alt="Team Member">
-          <div class="social-overlay">
-            <a href="https://www.instagram.com/mizu.le16">IG</a>
-            <a href="https://reality.app/profile/c4e72ce1?adj_t=8ogcewh_z9yhix5">RL</a>
-          </div>
-        </div>
-        <div class="team-info">
-          <span class="role-label">Small Forward (SF)</span>
-          <h3>Mizu</h3>
-        </div>
-      </div>
-
-      <div class="team-card">
-        <div class="avatar-wrapper">
-          <img src="asset/isalbskt.jpg" alt="Team Member">
-          <div class="social-overlay">
-            <a href="#">IG</a>
-          </div>
-        </div>
-        <div class="team-info">
-          <span class="role-label">Shooting Guard (SG)</span>
-          <h3>Faisal</h3>
-        </div>
-      </div>
-
-      <div class="team-card">
-        <div class="avatar-wrapper">
-          <img src="asset/kalbskt.jpg" alt="Team Member">
-          <div class="social-overlay">
-            <a href="#">IG</a>
-          </div>
-        </div>
-        <div class="team-info">
-          <span class="role-label">Center (C)</span>
-          <h3>Caelric</h3>
-        </div>
-      </div>
-
-      <div class="team-card">
-        <div class="avatar-wrapper">
-          <img src="asset/nolanbskt.jpg" alt="Team Member">
-          <div class="social-overlay">
-            <a href="#">IG</a>
-          </div>
-        </div>
-        <div class="team-info">
-          <span class="role-label">Power Forward (PF)</span>
-          <h3>Nolan</h3>
-        </div>
-      </div>
-
-      <div class="team-card">
-        <div class="avatar-wrapper">
-          <img src="asset/leyliabskt.jpg" alt="Team Member">
-          <div class="social-overlay">
-            <a href="#">IG</a>
-          </div>
-        </div>
-        <div class="team-info">
-          <span class="role-label">Team Manager</span>
-          <h3>Leylia</h3>
-        </div>
-      </div>
-
-    </div>
+    <div class="grid" id="teamGrid"></div>
   </section>
 </main>
 
@@ -389,6 +326,101 @@
 </footer>
 
 <script>
+  const teamBots = [
+    {
+      id: 'andreas',
+      name: 'Andreas',
+      fullName: 'Andreas Takagawa',
+      role: 'Anggota OSIS • Singer',
+      botImage: 'assets/bots/andre.png',
+      status: 'Aktif',
+      online: true,
+      avatar: 'asset/andre.png',
+      description: 'Andreas sering tampil di acara musik sekolah dan membantu menghidupkan suasana OSIS.'
+    },
+    {
+      id: 'aya',
+      name: 'Ayame',
+      fullName: 'Ayame Ubarashiki',
+      role: 'Bendahara OSIS • Penyiapan Ruangan',
+      botImage: 'assets/bots/aya.png',
+      status: 'Aktif',
+      online: true,
+      avatar: 'asset/aya.png',
+      description: 'Aya memastikan setiap ruang siap dipakai siswa, termasuk pengaturan otomatis ruangan dan acara.'
+    },
+    {
+      id: 'haru',
+      name: 'Haruka',
+      fullName: 'Haruka Arte',
+      role: 'Ketua OSIS • Moderator',
+      botImage: 'assets/bots/haru.png',
+      status: 'Aktif',
+      online: true,
+      avatar: 'asset/haru.png',
+      description: 'Haruka memimpin aturan sekolah dan memastikan siswa tetap disiplin saat berinteraksi.'
+    },
+    {
+      id: 'kazu',
+      name: 'Kazuma',
+      fullName: 'Kazuma Hideyoshi',
+      role: 'Wakil Ketua OSIS • Pemantau Data',
+      botImage: 'assets/bots/kazu.png',
+      status: 'Aktif',
+      online: true,
+      avatar: 'asset/kazu.png',
+      description: 'Kazuma mencatat jumlah siswa, member aktif, dan mempublikasikan ringkasan ke web secara rutin.'
+    },
+    {
+      id: 'kuma',
+      name: 'Kumachi',
+      fullName: 'Amamiya Kumachi',
+      role: 'Anggota OSIS • Asisten Belajar (AI)',
+      botImage: 'assets/bots/kuma.png',
+      status: 'Aktif',
+      online: true,
+      avatar: 'asset/kuma.png',
+      description: 'Kumachi mendampingi siswa yang butuh bimbingan dan membantu memudahkan proses belajar.'
+    },
+    {
+      id: 'miwa',
+      name: 'Miwazaki',
+      fullName: 'Miwazaki Hyora',
+      role: 'Sekretaris OSIS • Welcomer',
+      botImage: 'assets/bots/miwa.png',
+      status: 'Aktif',
+      online: true,
+      avatar: 'asset/miwa.png',
+      description: 'Miwa sambut siswa baru dengan ramah dan memastikan mereka merasa diterima di lingkungan OSIS.'
+    }
+  ];
+
+  function buildTeamCard(bot) {
+    const card = document.createElement('div');
+    card.className = 'team-card';
+    card.innerHTML = `
+      <div class="avatar-wrapper">
+        <img src="${bot.avatar}" alt="${bot.name}">
+      </div>
+      <div class="team-info">
+        <span class="role-label">${bot.role}</span>
+        <h3>${bot.name}</h3>
+        <span class="status-badge ${bot.online ? '' : 'offline'}">${bot.status}</span>
+        <p>${bot.description}</p>
+      </div>
+    `;
+    return card;
+  }
+
+  function renderTeamGrid() {
+    const grid = document.getElementById('teamGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    teamBots.forEach(bot => {
+      grid.appendChild(buildTeamCard(bot));
+    });
+  }
+
   function searchTeam() {
     const input = document.getElementById('teamSearch');
     const filter = input.value.toLowerCase();
@@ -399,14 +431,12 @@
       const name = cards[i].getElementsByTagName('h3')[0];
       if (name) {
         const textValue = name.textContent || name.innerText;
-        if (textValue.toLowerCase().indexOf(filter) > -1) {
-          cards[i].style.display = "";
-        } else {
-          cards[i].style.display = "none";
-        }
+        cards[i].style.display = textValue.toLowerCase().indexOf(filter) > -1 ? '' : 'none';
       }
     }
   }
+
+  window.addEventListener('DOMContentLoaded', renderTeamGrid);
 </script>
 
 </body>
