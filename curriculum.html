@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Curriculum | Aqua Academy</title>
+  <title>Announcements | Aqua Academy</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Tenor+Sans&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -17,27 +17,12 @@
       --font-body: 'Plus Jakarta Sans', sans-serif;
     }
 
-    * { 
-      margin: 0; 
-      padding: 0; 
-      box-sizing: border-box; 
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background-color: var(--sand); color: var(--text-dark); font-family: var(--font-body); line-height: 1.6; }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background-color: var(--sand);
-      color: var(--text-dark);
-      font-family: var(--font-body);
-      line-height: 1.6;
-    }
-
-    /* --- Navbar (Consistent with Index) --- */
+    /* Header */
     header {
       background-color: var(--deep-teal);
-      width: 100%;
       padding: 25px 5%;
       display: flex;
       justify-content: space-between;
@@ -45,206 +30,60 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
+    .brand { font-family: var(--font-heading); font-size: 1.4rem; letter-spacing: 3px; color: var(--white); text-decoration: none; }
+    nav { display: flex; align-items: center; gap: 25px; }
+    nav a { text-decoration: none; color: var(--white); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
 
-    .brand {
-      font-family: var(--font-heading);
-      font-size: 1.4rem;
-      letter-spacing: 3px;
-      color: var(--white);
-      text-decoration: none;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 25px;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: var(--white);
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: 0.3s;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    nav a:hover {
-      color: var(--gold-accent);
-    }
-
-    .btn-signup {
-      background-color: var(--gold-accent);
-      color: var(--deep-teal) !important;
-      padding: 8px 20px;
-      border-radius: 2px;
-    }
-
-    /* --- Hero Section --- */
-    .hero-curriculum {
+    /* Hero */
+    .hero {
       background-color: var(--deep-teal);
       color: var(--white);
       padding: 100px 8% 60px;
       text-align: center;
     }
+    .hero h1 { font-family: var(--font-heading); font-size: 3rem; margin-bottom: 15px; }
 
-    .hero-curriculum h1 {
-      font-family: var(--font-heading);
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      margin-bottom: 15px;
-    }
-
-    .hero-curriculum p {
-      font-weight: 300;
-      opacity: 0.8;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* --- Filter Section --- */
-    .filter-container {
-      padding: 40px 8%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .filter-container label {
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: var(--deep-teal);
-    }
-
-    #levelFilter {
-      padding: 10px 20px;
-      border: 1px solid var(--deep-teal);
-      background: transparent;
-      font-family: var(--font-body);
-      border-radius: 4px;
-      color: var(--deep-teal);
-      cursor: pointer;
-      outline: none;
-    }
-
-    /* --- Curriculum Grid --- */
-    .curriculum-section {
-      padding: 0 8% 100px;
-    }
-
+    /* Announcement Grid */
+    .container { padding: 60px 8%; }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 30px;
     }
 
     .card {
       background: var(--white);
-      padding: 40px;
       border-bottom: 4px solid var(--gold-accent);
-      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      transition: 0.3s;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      overflow: hidden;
+    }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+    
+    .card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background-color: #eee;
     }
 
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-      background-color: #fcfaf7;
-    }
-
-    .card h3 {
-      font-family: var(--font-heading);
-      font-size: 1.5rem;
-      color: var(--deep-teal);
-      margin-bottom: 15px;
-    }
-
-    .card p {
-      font-size: 0.95rem;
-      margin-bottom: 25px;
-      color: #555;
-    }
-
-    .level-badge {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      padding: 4px 12px;
-      background: var(--sand);
-      color: var(--deep-teal);
-      margin-bottom: 20px;
-      border-radius: 20px;
-    }
+    .card-content { padding: 25px; flex-grow: 1; }
+    .card-content h3 { font-family: var(--font-heading); color: var(--deep-teal); margin-bottom: 10px; }
+    .card-content p { font-size: 0.9rem; color: #555; margin-bottom: 20px; }
 
     .btn-card {
       text-decoration: none;
       color: var(--deep-teal);
-      font-family: var(--font-heading);
       font-weight: bold;
-      font-size: 0.8rem;
-      letter-spacing: 1px;
+      font-size: 0.75rem;
       text-transform: uppercase;
       border-bottom: 1px solid var(--deep-teal);
       width: fit-content;
-      transition: 0.3s;
     }
 
-    .btn-card:hover {
-      color: var(--warm-aqua);
-      border-color: var(--warm-aqua);
-      padding-left: 5px;
-    }
-
-    /* --- Footer --- */
-    footer {
-      background-color: var(--sand);
-      padding: 60px 5%;
-      text-align: center;
-      border-top: 1px solid rgba(0,0,0,0.05);
-    }
-
-    .footer-brand {
-      font-family: var(--font-heading);
-      font-size: 1.2rem;
-      color: var(--deep-teal);
-      margin-bottom: 10px;
-      display: block;
-    }
-
-    footer p {
-      font-size: 0.75rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      opacity: 0.6;
-    }
-
-    .footer-social {
-      margin-top: 20px;
-    }
-
-    .footer-social a {
-      color: var(--deep-teal);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.8rem;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      nav a:not(.btn-signup) {
-        display: none;
-      }
-      .filter-container {
-        flex-direction: column;
-      }
-    }
+    footer { text-align: center; padding: 40px; opacity: 0.6; font-size: 0.8rem; }
   </style>
 </head>
 <body>
@@ -252,106 +91,48 @@
 <header>
   <a href="index.html" class="brand">AQUA ACADEMY</a>
   <nav>
-    <a href="curriculum.html">Curriculum</a>
+    <a href="announcements.html">Announcements</a>
     <a href="team.html">Team</a>
-    <a href="archives.html">Archives</a>
-    <a href="https://discord.gg/M3P3ncHCCZ" class="btn-signup">Join Discord</a>
+    <a href="admin.html" style="opacity: 0.5;">Admin</a>
   </nav>
 </header>
 
-<main>
-  <section class="hero-curriculum">
-    <h1>Curriculum</h1>
-    <p>Explore structured learning paths designed for future innovators, rooted in dialectical excellence and modern technology.</p>
-  </section>
+<section class="hero">
+  <h1>Announcements</h1>
+  <p>Latest updates from the Atlantis Project</p>
+</section>
 
-  <section class="filter-container">
-    <label for="levelFilter">Filter by Skill Level:</label>
-    <select id="levelFilter" onchange="filterCourses()">
-      <option value="all">All Levels</option>
-      <option value="beginner">Beginner</option>
-      <option value="intermediate">Intermediate</option>
-      <option value="advanced">Advanced</option>
-    </select>
-  </section>
-
-  <section class="curriculum-section">
-    <div class="grid" id="courseGrid">
-      <div class="card" data-level="intermediate">
-        <div>
-          <span class="level-badge">Intermediate</span>
-          <h3>Web Development</h3>
-          <p>Mastering modern architectures, from responsive frontend layouts to scalable backend systems.</p>
-        </div>
-        <a href="#" class="btn-card">Start Learning</a>
-      </div>
-
-      <div class="card" data-level="intermediate">
-        <div>
-          <span class="level-badge">Intermediate</span>
-          <h3>Mobile Development</h3>
-          <p>Creating seamless cross-platform experiences using React Native and Flutter frameworks.</p>
-        </div>
-        <a href="#" class="btn-card">Start Learning</a>
-      </div>
-
-      <div class="card" data-level="beginner">
-        <div>
-          <span class="level-badge">Beginner</span>
-          <h3>UI/UX Design</h3>
-          <p>Understanding the harmony between aesthetics and usability through the lens of user psychology.</p>
-        </div>
-        <a href="#" class="btn-card">Start Learning</a>
-      </div>
-
-      <div class="card" data-level="advanced">
-        <div>
-          <span class="level-badge">Advanced</span>
-          <h3>Cyber Security</h3>
-          <p>Protecting digital sanctuaries through advanced penetration testing and cryptographic protocols.</p>
-        </div>
-        <a href="#" class="btn-card">Start Learning</a>
-      </div>
+<div class="container">
+  <div class="grid" id="announcementGrid">
     </div>
-  </section>
-</main>
+</div>
 
-<footer>
-  <span class="footer-brand">AQUA ACADEMY</span>
-  <p>© 2026 BRIGHT CHANGE • ATLANTIS PROJECT</p>
-  <div class="footer-social">
-    <a href="https://discord.gg/M3P3ncHCCZ">COMMUNITY DISCORD</a>
-  </div>
-</footer>
+<footer>© 2026 BRIGHT CHANGE • ATLANTIS PROJECT</footer>
 
 <script>
-  function filterCourses() {
-    const filterValue = document.getElementById('levelFilter').value;
-    const cards = document.querySelectorAll('.card');
+  function displayAnnouncements() {
+    const grid = document.getElementById('announcementGrid');
+    const posts = JSON.parse(localStorage.getItem('aqua_posts')) || [];
 
-    cards.forEach(card => {
-      const level = card.getAttribute('data-level');
-      
-      // Sederhana: Fade out and hide
-      if (filterValue === 'all' || level === filterValue) {
-        card.style.display = 'flex';
-        setTimeout(() => { card.style.opacity = '1'; }, 10);
-      } else {
-        card.style.opacity = '0';
-        setTimeout(() => { card.style.display = 'none'; }, 300);
-      }
-    });
+    if (posts.length === 0) {
+      grid.innerHTML = "<p>No announcements yet.</p>";
+      return;
+    }
+
+    // Urutkan dari yang terbaru
+    grid.innerHTML = posts.reverse().map(post => `
+      <div class="card">
+        <img src="asset/announcement/${post.image}" alt="News" class="card-img" onerror="this.src='https://via.placeholder.com/400x200?text=No+Image'">
+        <div class="card-content">
+          <h3>${post.title}</h3>
+          <p>${post.content}</p>
+          ${post.link ? `<a href="${post.link}" target="_blank" class="btn-card">Read More →</a>` : ''}
+        </div>
+      </div>
+    `).join('');
   }
 
-  // Animasi smooth scroll tambahan untuk anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
-      });
-    });
-  });
+  window.onload = displayAnnouncements;
 </script>
 
 </body>

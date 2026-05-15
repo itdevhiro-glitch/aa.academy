@@ -1,100 +1,235 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login - Icikiwir Esports</title>
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <script defer src="assets/js/core/page-transitions.js"></script>
-</head>
-<body class="elite-page elite-login-page cinematic-auth-page">
-  <main class="cinematic-auth-shell">
-    <a class="cinematic-brand" href="index.html" aria-label="Icikiwir Esports">
-      <span>ICIKIWIR</span>
-      <small>TOURNEY</small>
-    </a>
-
-    <section class="cinematic-auth-panel" aria-label="Authentication form">
-      <div class="cinematic-auth-title">
-        <h1 id="auth-card-title">Siap tanding?</h1>
-        <p id="auth-card-subtitle">Masuk dulu, lanjut ke lobby.</p>
-      </div>
-
-      <p id="auth-status-message" class="auth-message cinematic-message"></p>
-
-      <form id="login-form" class="cinematic-form">
-        <label class="cinematic-field">
-          <i class="ri-mail-line"></i>
-          <input type="text" id="loginUsername" placeholder="Email atau username" autocomplete="username" required>
-        </label>
-
-        <label class="cinematic-field">
-          <i class="ri-lock-2-fill"></i>
-          <input type="password" id="loginPassword" placeholder="Password" autocomplete="current-password" required>
-          <button type="button" class="cinematic-eye-btn" id="toggle-password" aria-label="Show password"><i class="ri-eye-fill"></i></button>
-        </label>
-
-        <button type="submit" class="cinematic-submit-btn">Masuk</button>
-        <button type="button" class="cinematic-link-btn auth-forgot">Lupa password?</button>
-
-        <p class="cinematic-switch">Belum punya akun? <button id="to-register-btn" class="cinematic-link-btn cinematic-accent">Daftar</button></p>
-      </form>
-
-      <form id="register-form" class="cinematic-form hidden">
-        <label class="cinematic-field cinematic-select">
-          <i class="ri-user-settings-line"></i>
-          <select id="regAccountType" required>
-            <option value="team">Team</option>
-            <option value="user">Solo Player</option>
-          </select>
-        </label>
-
-        <label class="cinematic-field"><i class="ri-at-line"></i><input type="text" id="regUsername" placeholder="Username" required></label>
-        <label class="cinematic-field"><i class="ri-team-line"></i><input type="text" id="regTeamName" placeholder="Team / Player name" required></label>
-
-        <label class="cinematic-field"><i class="ri-whatsapp-line"></i><input type="tel" id="regWhatsapp" placeholder="Nomor WhatsApp aktif, contoh: 08123456789" required></label>
-        <p class="field-help"><i class="ri-information-line"></i> Nomor HP/WhatsApp dipakai untuk koordinasi match: bikin room, atur jadwal, konfirmasi hasil, dan memudahkan admin input score dari info kedua team/player.</p>
-
-        <label class="cinematic-field"><i class="ri-mail-line"></i><input type="email" id="regEmail" placeholder="Email tournament: nickname@icikiwir.digital" required></label>
-        <p class="field-help"><i class="ri-shield-check-line"></i> Wajib pakai email turnamen <b>@icikiwir.digital</b>, bukan Gmail pribadi, agar tidak ada salah paham seolah website meminta/menyimpan email asli player.</p>
-
-        <div class="register-info-box" aria-label="Info pendaftaran Icikiwir">
-          <div><strong>Kenapa harus @icikiwir.digital?</strong><span>Ini hanya identitas akun turnamen Icikiwir, bukan email pribadi. Tujuannya menjaga trust dan menghindari tuduhan phishing/nyuri email.</span></div>
-          <div><strong>Kenapa butuh nomor WA?</strong><span>Biar player/team bisa saling kontak untuk room, jadwal match, dan validasi hasil. Admin cukup input score dari laporan kedua pihak.</span></div>
-        </div>
-        <label class="cinematic-field"><i class="ri-lock-password-line"></i><input type="password" id="regPassword" placeholder="Password" required></label>
-
-        <button type="submit" class="cinematic-submit-btn">Buat akun</button>
-        <p class="cinematic-switch">Sudah punya akun? <button id="to-login-btn" class="cinematic-link-btn cinematic-accent">Masuk</button></p>
-      </form>
-    </section>
-  </main>
-
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
-  <script type="module" src="assets/js/pages/login.js"></script>
-  <script>
-    const toggle = document.getElementById('toggle-password');
-    const pass = document.getElementById('loginPassword');
-    if (toggle && pass) {
-      toggle.addEventListener('click', () => {
-        const shown = pass.type === 'text';
-        pass.type = shown ? 'password' : 'text';
-        toggle.innerHTML = shown ? '<i class="ri-eye-fill"></i>' : '<i class="ri-eye-off-fill"></i>';
-      });
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal | Aqua Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Tenor+Sans&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sand: #f4ece1;
+      --deep-teal: #024959;
+      --gold-accent: #d4a373;
+      --text-dark: #1a3c40;
+      --white: #ffffff;
+      --font-heading: 'Tenor Sans', serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
     }
-    const title = document.getElementById('auth-card-title');
-    const subtitle = document.getElementById('auth-card-subtitle');
-    document.getElementById('to-register-btn')?.addEventListener('click', () => {
-      title.textContent = 'Bikin akun';
-      subtitle.textContent = 'Pakai email @icikiwir.digital + WA aktif untuk koordinasi match.';
-    });
-    document.getElementById('to-login-btn')?.addEventListener('click', () => {
-      title.textContent = 'Siap tanding?';
-      subtitle.textContent = 'Masuk dulu, lanjut ke lobby.';
-    });
-  </script>
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--sand);
+      font-family: var(--font-body);
+      color: var(--text-dark);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 40vh;
+      background-color: var(--deep-teal);
+      z-index: 0;
+    }
+
+    .auth-container {
+      background-color: var(--white);
+      width: 90%;
+      max-width: 450px;
+      padding: 50px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+      border-radius: 4px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .brand-header h2 {
+      font-family: var(--font-heading);
+      letter-spacing: 4px;
+      font-size: 1.1rem;
+      color: var(--deep-teal);
+      text-transform: uppercase;
+    }
+
+    .auth-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 35px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .tab-link {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding-bottom: 12px;
+      cursor: pointer;
+      color: #aaa;
+      transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-bottom: 2px solid transparent;
+    }
+
+    .tab-link.active {
+      color: var(--deep-teal);
+      border-bottom: 2px solid var(--gold-accent);
+    }
+
+    .auth-form {
+      display: none;
+      animation: slideUp 0.6s ease;
+    }
+
+    .auth-form.active {
+      display: block;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: var(--deep-teal);
+      opacity: 0.8;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1px solid #e0e0e0;
+      background: #fafafa;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border-color: var(--gold-accent);
+      background: var(--white);
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 16px;
+      background-color: var(--deep-teal);
+      color: var(--white);
+      border: none;
+      font-family: var(--font-heading);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: 0.4s;
+      font-size: 0.8rem;
+    }
+
+    .btn-submit:hover {
+      background-color: var(--gold-accent);
+      color: var(--text-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(212, 163, 115, 0.3);
+    }
+
+    .back-home {
+      position: absolute;
+      top: -60px;
+      left: 0;
+      text-decoration: none;
+      color: var(--white);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.75rem;
+      opacity: 0.5;
+      letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 480px) {
+      .auth-container { padding: 40px 25px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="auth-container">
+  <a href="index.html" class="back-home">← Return to Academy</a>
+  
+  <div class="brand-header">
+    <h2>Aqua Academy</h2>
+  </div>
+
+  <div class="auth-tabs">
+    <div class="tab-link" id="tab-signin">Sign In</div>
+    <div class="tab-link" id="tab-signup">Sign Up</div>
+  </div>
+
+  <div id="form-signin" class="auth-form">
+    <form id="loginForm">
+      <div class="form-group">
+        <label>Academic Identifier</label>
+        <input type="email" id="loginEmail" placeholder="email@aquaacademy.edu" required>
+      </div>
+      <div class="form-group">
+        <label>Security Key</label>
+        <input type="password" id="loginPassword" placeholder="••••••••" required>
+      </div>
+      <button type="submit" class="btn-submit">Authenticate</button>
+    </form>
+    <p class="footer-note">Accessing the restricted archives.</p>
+  </div>
+
+  <div id="form-signup" class="auth-form">
+    <form id="registerForm">
+      <div class="form-group">
+        <label>Scholar Name</label>
+        <input type="text" id="regName" placeholder="Your full name" required>
+      </div>
+      <div class="form-group">
+        <label>Academic Identifier</label>
+        <input type="email" id="regEmail" placeholder="your@email.com" required>
+      </div>
+      <div class="form-group">
+        <label>Create Security Key</label>
+        <input type="password" id="regPassword" placeholder="••••••••" required>
+      </div>
+      <button type="submit" class="btn-submit">Join the Faculty</button>
+    </form>
+    <p class="footer-note">By enrolling, you accept the Platonist code.</p>
+  </div>
+</div>
+
+<script type="module" src="script/login.js"></script>
+
 </body>
 </html>
